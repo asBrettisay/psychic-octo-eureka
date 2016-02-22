@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="quizApp">
+<head>
+  <title>DevMountain Quizzes!</title>
+  <link rel="stylesheet" href="public/css/styles.css">
+</head>
+<body>
+
+  <ui-view></ui-view>
+
+  <!-- Angular -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+  <!-- Apps -->
+  <script src="components/app.js"></script>
+
+  <!-- Controllers -->
+  <script src="components/home/homeCtrl.js"></script>
+  <script src="components/quiz/quizCtrl.js"></script>
+  <script src="components/results/resultsCtrl.js"></script>
+
+  <!-- Services -->
+  <script src="components/services/quizService.js"></script>
+
+</body>
+
+</html>

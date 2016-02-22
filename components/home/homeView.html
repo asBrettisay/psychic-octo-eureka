@@ -1,0 +1,18 @@
+<header class="home-nav-bar">Home</header>
+
+<section class="main-quiz">
+  <h1>Choose a quiz!</h1>
+  <ul ng-repeat="quiz in quizzes">
+    <li>{{quiz.name}}</li>
+  </ul>
+</section>
+
+<container class="main-past-quiz">
+  <h1>View Past Quizzes</h1>
+  <ul ng-repeat="quiz in pastQuizzes">
+    <li>{{quiz.name}}</li>
+    <ul class="quizzes" ng-repeat="quiz in quiz.archive">
+      <li>{{quiz.date}}</li>
+    </ul>
+  </ul>
+</container>
