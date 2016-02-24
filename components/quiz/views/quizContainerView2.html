@@ -14,7 +14,7 @@
 
     <!-- Multiple Choice Questions -->
     <div ng-if="multiple">
-      <multiple-choice question="currentQuestion" save="save()" answers="answers"></multiple-choice>
+      <multiple-choice question="currentQuestion" save="save(id, answer)" answers="answers" finished="finished"></multiple-choice>
     </div>
     <!-- Blank Questions -->
     <div ng-if="!multiple">

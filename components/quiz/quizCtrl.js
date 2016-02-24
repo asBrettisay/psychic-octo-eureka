@@ -35,12 +35,16 @@ angular.module('quizApp')
     $scope.selectedAnswer = null;
   }
 
-  $scope.save = function(answer) {
+  $scope.save = function(id, answer) {
     $scope.setCurrentQuestion(($scope.currentQuestion.id) + 1);
     if ($scope.currentQuestion.qtype === 'multiple') {
       $scope.multiple = true;
     } else if ($scope.currentQuestion.qtype === 'blank') {
       $scope.multiple = false;
+    }
+    $scope.answers[id] = answer;
+    if ($scope.answers.length === $scope.questions.length) {
+      $scope.finished = true;
     }
   }
 

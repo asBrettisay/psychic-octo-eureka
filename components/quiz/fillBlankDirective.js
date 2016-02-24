@@ -27,7 +27,7 @@ angular.module('quizApp')
         } else {
           $scope.answer = "";
         }
-      })
+      });
     }
   }
 })

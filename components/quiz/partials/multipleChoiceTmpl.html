@@ -6,5 +6,6 @@
     {{choice}}<br><br></label>{{selectedAnswer}}
   </form>
   </div>
-  <div class="btn" ng-click="saveAnswer(selected)">Save and continue</div>
+  <div ng-if="!finished" class="btn" ng-click="saveAnswer(selected)">Save and continue</div>
+  <div ng-if="finished" class="btn">Check answers</div>
 </div>

@@ -5,7 +5,8 @@ angular.module('quizApp')
     scope: {
       question: '=',
       save: '&',
-      answers: '='
+      answers: '=',
+      finished: '='
     },
     controller: function($scope) {
       $scope.$watch('question', function() {
