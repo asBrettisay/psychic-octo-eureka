@@ -1,0 +1,23 @@
+<div class="detail" ng-if="!displayResults">
+  <div class="detail-question">{{currentQuestion.title}}</div>
+  <div ng-if="currentQuestion.qtype === 'multiple'" class="detail-answers" >
+    <form>
+      <label ng-repeat="choice in currentQuestion.choices"><input type="radio" ng-model="currentQuestion.answer" value="{{$index}}" name="choice" ng-click="answeredAll()" required/>
+      {{choice}}<br><br></label>{{selectedAnswer}}
+    </form>
+  </div>
+
+  <div ng-if="currentQuestion.qtype === 'blank'" class="detail-answers">
+    <input type="text" ng-model="currentQuestion.answer"><br>
+
+  </div>
+  <div ng-if="!finished" class="btn" ng-click="save()">Save and continue</div>
+  <div ng-if="finished" class="btn" ng-click="checkAnswers()">Save and Check Answers</div>
+
+
+</div>
+<div class="detail" ng-if="displayResults">
+  <div class="results" ng-repeat="q in questions">
+    {{q.title}}: {{q.correctly}}
+  </div>
+</div>

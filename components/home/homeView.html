@@ -1,9 +1,7 @@
-<header class="home-nav-bar">Home</header>
-
 <section class="main-quiz">
   <h1>Choose a quiz!</h1>
   <ul ng-repeat="quiz in quizzes">
-    <li>{{quiz.name}}</li>
+    <li><a ui-sref="quiz({quizName: quiz})">{{quiz}}</a></li>
   </ul>
 </section>
 

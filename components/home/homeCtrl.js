@@ -1,14 +1,8 @@
 angular.module('quizApp')
-.controller('homeCtrl', function($scope) {
-  $scope.quizzes = [{
-    name: 'html',
-  },
-  {
-    name: 'css',
-  },
-  {
-    name: 'javascript'
-  }];
+.controller('homeCtrl', function($scope, quizService) {
+  quizService.getQuizNames().then(function(data) {
+    $scope.quizzes = data;
+  })
 
   $scope.pastQuizzes = [{
     name: 'angular',

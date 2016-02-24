@@ -1,0 +1,35 @@
+<container class="quiz-container">
+  <div class="list-wrapper">
+    <div class='quiz-list-btn-row'>
+      <div class="btn">Save Answers</div>
+      <div class="btn" ng-click="checkAnswers()">Check Answers</div>
+      <div class="btn" ng-click="reset()">Reset</div>
+    </div>
+    <input type="checkbox" ng-model='instantGratification'>Instant Gratification</input>
+    <!-- Questions List starts here -->
+    <question-list questions="questions" answers="answers" currentQuestion="currentQuestion" setCurrentQuestion="setCurrentQuestion()"></question-list>
+  </div>
+  <!-- Detail here -->
+  <div class="detail" ng-if="!displayResults">
+
+    <!-- Multiple Choice Questions -->
+    <div ng-if="multiple">
+      <multiple-choice question="currentQuestion" save="save()" answers="answers"></multiple-choice>
+    </div>
+    <!-- Blank Questions -->
+    <div ng-if="!multiple">
+      <fill-blank question="currentQuestion" save="save()" answers="answers"></fill-blank>
+    </div>
+
+    <!-- Buttons -->
+    <!-- <div ng-if="!finished" class="btn" ng-click="save()">Save and continue</div> -->
+    <div ng-if="finished" class="btn" ng-click="checkAnswers()">Save and Check Answers</div>
+  </div>
+
+  <!-- Results -->
+  <div class="detail" ng-if="displayResults">
+    <div class="results" ng-repeat="q in questions">
+      {{q.title}}: {{q.correctly}}
+    </div>
+  </div>
+</container>

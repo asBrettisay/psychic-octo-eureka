@@ -6,6 +6,10 @@
 </head>
 <body>
 
+  <header class="home-nav-bar">
+    <a ui-sref="home">Home</a>
+    </header>
+
   <ui-view></ui-view>
 
   <!-- Angular -->
@@ -22,6 +26,11 @@
 
   <!-- Services -->
   <script src="components/services/quizService.js"></script>
+
+  <!-- Directives -->
+  <script src="components/quiz/questionListDirective.js"></script>
+  <script src="components/quiz/multipleChoiceDirective.js"></script>
+  <script src="components/quiz/fillBlankDirective.js"></script>
 
 </body>
 
