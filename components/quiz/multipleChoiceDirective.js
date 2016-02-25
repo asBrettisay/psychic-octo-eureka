@@ -20,7 +20,7 @@ angular.module('quizApp')
       }
 
       $scope.saveAnswer = function(selected) {
-        $scope.save({id: $scope.question.id, answer: selected})
+        $scope.save({answer: selected})
       }
     },
     restrict: 'AE',

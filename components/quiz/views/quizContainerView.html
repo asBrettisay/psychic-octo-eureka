@@ -1,6 +1,40 @@
 <container class="quiz-container">
-  <div class="list-wrapper" ui-view="list">
-  </div>
-  <div ui-view="detail"></div>
+  <div class="list-wrapper">
+    <div class='quiz-list-btn-row'>
+      <div class="btn">Save Answers</div>
+      <div class="btn" ng-click="checkAnswers()">Check Answers</div>
+      <div class="btn" ng-click="reset()">Reset</div>
+    </div>
+    <input type="checkbox" ng-model='instantGratification'>Instant Gratification</input>
+    <!-- Questions List starts here -->
 
+    <question-list questions="questions" answers="answers" current-question="currentQuestion" set-current-question="setCurrentQuestion(question)"></question-list>
+
+  </div>
+  <!-- Detail here -->
+  <div class="detail" ng-if="!finished">
+
+      <h2>{{currentQuestion.title}}</h2>
+
+    <!-- Multiple Choice Questions -->
+    <!-- <div class="choices" ng-repeat="choice in currentQuestion.choices">
+      <p><label><input type="radio" name="choice" value="{{$index}}" ng-model="currentQuestion.choice">  {{choice}}</label></p>
+    </div> -->
+    <div ng-if="multiple">
+      <multiple-choice question="currentQuestion" save="save(answer)" answers="answers" finished="finished"></multiple-choice>
+    </div>
+
+    <!-- Fill In Blank -->
+    <div ng-if="!multiple">
+      <fill-blank question="currentQuestion" save="save(answer)" answers="answers"></fill-blank>
+    <!-- Buttons -->
+  </div>
+
+  <!-- Results -->
+</div>
+  <div class="detail" ng-if="finished">
+    <div class="results" ng-repeat="q in results">
+      {{q.title}}: {{q.result}} Hi
+    </div>
+  </div>
 </container>

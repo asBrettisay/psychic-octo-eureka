@@ -1,9 +1,7 @@
 angular.module('quizApp')
-.controller('homeCtrl', function($scope, quizService) {
-  quizService.getQuizNames().then(function(data) {
-    $scope.quizzes = data;
-  })
-
+.controller('homeCtrl', function($scope, quizService, quizList) {
+  $scope.quizzes = quizList;
+  
   $scope.pastQuizzes = [{
     name: 'angular',
     archive: [{

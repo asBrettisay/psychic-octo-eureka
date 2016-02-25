@@ -6,27 +6,22 @@ angular.module('quizApp', ['ui.router'])
     .state('home', {
       templateUrl: 'components/home/homeView.html',
       controller: 'homeCtrl',
-      url: '/'
+      url: '/',
+      resolve: {
+        quizList: function(quizService) {
+          return quizService.getQuizNames()
+        }
+      }
     })
     .state('quiz', {
       url: '/quiz/:quizName',
       controller: 'quizCtrl',
-      templateUrl: 'components/quiz/views/quizContainerView2.html'
+      templateUrl: 'components/quiz/views/quizContainerView.html',
+      resolve: {
+        questions: function(quizService, $stateParams) {
+          return quizService.getQuestions($stateParams.quizName)
+        }
+      }
     })
-    // .state('quiz', {
-    //   url: '/quiz/:quizName',
-    //   controller: 'quizCtrl',
-    //   templateUrl: 'components/quiz/views/quizContainerView.html'
-    // })
-    // .state('quiz.view', {
-    //   parent: 'quiz',
-    //   views: {
-    //     'list': {
-    //       templateUrl: 'components/quiz/views/questionListWrapperView.html'
-    //     },
-    //     'detail': {
-    //       templateUrl: 'components/quiz/views/questionDetailView.html'
-    //     }
-    //   }
-    // })
+
   });

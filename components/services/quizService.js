@@ -66,7 +66,7 @@ angular.module('quizApp')
     var defer = $q.defer();
     for (var quiz in quizSampleObj) {
       if (quiz === quizName) {
-        defer.resolve(quizSampleObj[quiz]);
+        defer.resolve(quizSampleObj[quiz].questions);
       }
     }
     return defer.promise;
@@ -78,6 +78,30 @@ angular.module('quizApp')
       ans.push(quiz)
     }
     defer.resolve(ans);
+    return defer.promise;
+  }
+
+  this.checkAnswers = function(questions, answers) {
+    var results = {}, defer = $q.defer();
+    questions.forEach(function(question) {
+      if (Number(answers[question.id]) === question.correct) {
+        results[question.id] = {
+                                  title: question.title,
+                                  result: "Correct!"
+                                };
+      } else if (Number(answers[question.id]) == undefined){
+        results[question.id] = {
+                                title: question.title,
+                                result: "No answer given."
+                              }
+      } else {
+        results[question.id] = {
+                                  title: question.title,
+                                  result: "Incorrect."
+                                };
+      }
+    })
+    defer.resolve(results);
     return defer.promise;
   }
 
